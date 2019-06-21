@@ -1,0 +1,42 @@
+<div class="mb-5 mx-auto animated fadeIn" style="max-width: 980px;">
+  <div class="row no-gutters">
+    <div class="col-md-4 px-2">
+      <img [src]="movie?.poster_path | urlImage" class="card-img" alt="...">
+      <p class="text-muted my-2">Lanzamiento: {{ movie?.release_date | date}}</p>
+      <button class="btn btn-outline-danger" [routerLink]="['/'+ regresarA]">Regresar</button>
+    </div>
+    <div class="col-md-8 px-2">
+      <div class="card">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <h2 class="card-title">{{movie?.title}}</h2>
+          </li>
+          <li class="list-group-item">
+            <b>Sinopsis: </b>
+            <p class="card-text">{{ movie?.overview }}</p>
+          </li>
+          <li class="list-group-item text-center">
+            <span class="badge badge-dark mx-1" *ngFor="let genero of movie?.genres">{{ genero?.name }}</span>
+          </li>
+          <li class="list-group-item text-center">
+            <a class="card-text" [href]="movie?.homepage" target="_blank">{{ movie?.homepage }}</a>
+          </li>
+          <li class="list-group-item text-center">
+            <div class="row">
+              <div class="col-6">
+                <b>Popularidad: </b>{{ movie?.popularity }}
+              </div>
+              <div class="col-6">
+                <b>Votos Promedio: </b>{{ movie?.vote_average }}
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item text-center">
+            <b>Productoras:</b> <br>
+            <span class="mx-3" *ngFor="let production of movie?.production_companies">{{ production?.name }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
